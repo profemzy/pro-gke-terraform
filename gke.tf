@@ -9,27 +9,23 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-
   ip_allocation_policy {
     cluster_secondary_range_name  = var.cluster_secondary_range_name
     services_secondary_range_name = var.services_secondary_range_name
   }
 
-
   private_cluster_config {
     enable_private_endpoint = false
     enable_private_nodes    = true
-    master_ipv4_cidr_block  = "172.16.0.0/28"
+    master_ipv4_cidr_block  = var.master_ipv4_cidr_block
   }
 
 
   master_authorized_networks_config {
-
     cidr_blocks {
       cidr_block   = "41.217.88.196/32"
       display_name = "InfoTitans"
     }
-
   }
 
   network    = google_compute_network.vpc.name

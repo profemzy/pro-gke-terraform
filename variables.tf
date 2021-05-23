@@ -42,6 +42,11 @@ variable "cluster_secondary_range_name" {
   EOF
 }
 
+variable "master_ipv4_cidr_block" {
+  type = string
+  default = "172.16.0.0/28"
+}
+
 # VPC
 variable "project_id" {
   description = "project id"
