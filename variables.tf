@@ -61,3 +61,7 @@ provider "google" {
   region  = var.region
 }
 
+variable "subnet_cidr" {
+  description = "Subnet CIDR"
+  default =  "10.0.16.0/20"
+}
