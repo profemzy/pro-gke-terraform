@@ -23,7 +23,7 @@ resource "google_container_cluster" "primary" {
 
   master_authorized_networks_config {
     cidr_blocks {
-      cidr_block   = "41.217.88.196/32"
+      cidr_block   = "154.118.16.149/32"
       display_name = "InfoTitans"
     }
   }
