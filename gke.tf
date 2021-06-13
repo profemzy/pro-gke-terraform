@@ -38,7 +38,7 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   cluster    = google_container_cluster.primary.name
   node_count = var.gke_num_nodes
-  node_locations = ["europe-west3-a", "europe-west3-b"]
+  node_locations = ["europe-west3-a", "europe-west3-c"]
 
   autoscaling {
     max_node_count = 2
