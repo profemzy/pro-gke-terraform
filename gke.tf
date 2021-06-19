@@ -38,6 +38,8 @@ resource "google_container_node_pool" "primary_nodes" {
   location   = var.region
   cluster    = google_container_cluster.primary.name
   node_count = var.gke_num_nodes
+
+  # I only want 2 nodes for demo one in each zone
   node_locations = ["europe-west3-a", "europe-west3-c"]
 
   autoscaling {
@@ -55,8 +57,8 @@ resource "google_container_node_pool" "primary_nodes" {
       env = var.project_id
     }
 
-    # preemptible  = true
-    machine_type = "n1-standard-1"
+    preemptible  = true # not for production or sustained usage
+    machine_type = "e2-medium"
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
